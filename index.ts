@@ -1,6 +1,7 @@
 import express, { Express, Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 const indexRouter = require('./routes/index');
+const cors = require('cors');
 
 dotenv.config();
 
@@ -15,6 +16,11 @@ app.use(
     limit: '50mb', // 최대 50mb
   })
 );
+
+app.use(cors({
+  origin: true, // 모든 출처 허용 옵션
+  credential: true,
+}))
 
 // FUNCTION start run server
 app.listen(port, () => {
