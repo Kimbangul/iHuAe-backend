@@ -7,7 +7,7 @@ const whitelist = ["http://localhost:3000", "http://localhost:8000",];
 // PARAM 옵션
 const corsOptions : cors.CorsOptions = {
   origin: whitelist,
-
+  credentials: true,
 }
 
 export default corsOptions;

@@ -1,5 +1,6 @@
 import express, { Express, Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
+import corsOptions from './cors';
 const indexRouter = require('./routes/index');
 const cors = require('cors');
 
@@ -9,6 +10,10 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT;
 
+app.use(cors({
+  origin: '*', // 모든 출처 허용 옵션. true 를 써도 된다.
+}));
+
 app.use('/', indexRouter);
 /** 클라이언트 요청 body를 json으로 파싱 처리 */
 app.use(
@@ -16,11 +21,6 @@ app.use(
     limit: '50mb', // 최대 50mb
   })
 );
-
-app.use(cors({
-  origin: true, // 모든 출처 허용 옵션
-  credential: true,
-}))
 
 // FUNCTION start run server
 app.listen(port, () => {
