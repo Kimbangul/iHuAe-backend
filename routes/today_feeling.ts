@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 const router = Router();
+const qs = require('querystring');
 
 router
   .get('/', (req: Request, res: Response) => {
@@ -8,7 +9,16 @@ router
     res.send('get');
   })
   .post('/insert', (req: Request, res: Response) => {
-    console.log(req, res);
+    let body = '';
+
+    req.on('data', function (data) {
+      body = body + data;
+    });
+    req.on('end', function () {
+      let data = qs.parse(body);
+      console.log(data);
+      console.log(data.test);
+    });
     res.send('post');
   })
   .put('/update', (req: Request, res: Response) => {
