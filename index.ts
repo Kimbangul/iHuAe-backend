@@ -10,11 +10,15 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT;
 
-app.use(cors({
-  origin: '*', // 모든 출처 허용 옵션. true 를 써도 된다.
-}));
+app.use(cors(corsOptions));
 
 app.use('/', indexRouter);
+
+app.use(function (req, res, next) {
+  res.setHeader("Content-Type", "application/json");
+  next();
+});
+
 /** 클라이언트 요청 body를 json으로 파싱 처리 */
 app.use(
   express.json({

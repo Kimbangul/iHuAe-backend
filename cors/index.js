@@ -6,5 +6,6 @@ const whitelist = ["http://localhost:3000", "http://localhost:8000", "http://127
 const corsOptions = {
     origin: whitelist,
     credentials: true,
+    optionsSuccessStatus: 200
 };
 exports.default = corsOptions;
