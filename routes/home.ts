@@ -5,7 +5,19 @@ const router = Router();
  * host:port
  *  */
 router.get('/', (req: Request, res: Response) => {
-  res.send('Hello world!');
+  const dummy = {
+    msg: 'Hello world',
+    data: 200
+}
+res.json(dummy);
 });
+
+router.post('/insert', (req: Request, res: Response) => {
+  const dummy = {
+    data: 200
+  }
+  res.json(dummy);
+});
+
 
 module.exports = router;

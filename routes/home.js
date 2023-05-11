@@ -10,7 +10,13 @@ router.get('/', (req, res) => {
     const dummy = {
         msg: 'Hello world',
         data: 200
-    }
+    };
+    res.json(dummy);
+});
+router.post('/insert', (req, res) => {
+    const dummy = {
+        data: 200
+    };
     res.json(dummy);
 });
 module.exports = router;
